@@ -40,9 +40,15 @@ class Huruf extends yidas\rest\Controller
 		}
 	}
 
-	public function findSifat(Type $var = null)
+	public function findSifat($id)
 	{
-		# code...
+		try {
+			$sifat = $this->Huruf_model->getSifatByIdHuruf($id);
+			$data = (isset($sifat)) ? $this->pack($sifat) : $this->pack("ID Makhroj sebaiknya dari m1 sampai m17");
+			return $this->response->json($data);		
+		} catch (\Throwable $th) {
+			return $this->response->json($this->pack($th,404,"Not Found"));
+		}
 	}
 }
 
