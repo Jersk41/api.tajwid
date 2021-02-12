@@ -1,0 +1,5 @@
+{
+    "require": {
+        "yidas/codeigniter-rest": "^1.7"
+    }
+}
