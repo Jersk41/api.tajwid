@@ -53,7 +53,7 @@ $route['default_controller'] = 'errors';
 // $route['404_override'] = '';
 // $route['translate_uri_dashes'] = FALSE;
 
-// $route['404_override'] = 'errors/page_missing';
+$route['404_override'] = 'errors/page_missing';
 // rest api routes
 $route['api/huruf']['GET'] = 'huruf';
 $route['api/huruf/(:any)']['GET'] = 'huruf/showDetails/$1';
@@ -68,5 +68,5 @@ $route['api/sifat']['GET'] = 'sifat';
 $route['api/sifat/group/(:num)']['GET'] = 'sifat/getSifatGroup/$1';
 
 // quran
-$route['api/quran/search'] = 'quran/find';
+$route['api/quran/search']['POST'] = 'quran/find';
 

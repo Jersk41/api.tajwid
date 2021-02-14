@@ -10,6 +10,10 @@ class Huruf_model extends CI_Model
 
 	public function getHurufById($id)
 	{
+		if(!ereg("/h[012][0-9]/",$id)){
+			redirect('/errors');
+		};
+		// $id = ($num >= 1 && $num <= 29) ? $num : redirect('/errors');
 		$huruf = $this->db->select("huruf.id_huruf,huruf.nama_huruf,huruf.hijaiyah,makhroj.nama_makhroj AS makhroj")
 							->from($this->table)
 							->join("makhroj","makhroj.id_makhroj=huruf.makhroj")
@@ -24,12 +28,16 @@ class Huruf_model extends CI_Model
 								->get()
 								->result_array();
 		
-		$sifat = [];
-		foreach ($querySifat as $q => $val) {
-			$sifat[] = $val['nama_sifat'];
+		if ($querySifat) {
+			$sifat = [];
+			foreach ($querySifat as $q => $val) {
+				$sifat[] = $val['nama_sifat'];
+			}
+			$huruf["sifat"] = $sifat;
+			return $huruf;
+		}else {
+			return false;
 		}
-		$huruf["sifat"] = $sifat;
-		return $huruf;
 	}
 
 	public function getMakhrojByIdHuruf($id)

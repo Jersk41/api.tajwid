@@ -42,15 +42,9 @@ class Quran extends yidas\rest\Controller
 				curl_close($curl);
 			}
 		}else{
-			$data = (!empty($ayat)) ? $this->pack($ayat,200) : $this->pack("We can't find that, try another ayah",404,"Not Found");
+			$data = (!empty($ayat)) ? $this->pack($ayat,200) : $this->pack(false,404,"Not Found, We can't find that, try another ayah");
 		}
 		return $this->response->json($data);
-	}
-
-	public function tajwid()
-	{
-		$parser = new AlQuranCloud\Tools\Parser();
-
 	}
 }
 ?>

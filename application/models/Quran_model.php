@@ -20,6 +20,4 @@ class Quran_model extends CI_Model
 	}
 }
 
-
-
 ?>

@@ -22,7 +22,7 @@ class Huruf extends yidas\rest\Controller
 	{
 		try {
 			$huruf = $this->Huruf_model->getHurufById($id);
-			$data = (isset($huruf)) ? $this->pack($huruf,200) : $this->pack("Parameter should be h01-h31",404,"Not Found");	
+			$data = ($huruf) ? $this->pack($huruf,200) : $this->pack(false,404,"Not Found, Parameter should be h01-h29");	
 			return $this->response->json($data);			
 		} catch (\Throwable $th) {
 			return $this->response->json($this->pack($th,404,"Not Found"));
@@ -33,7 +33,7 @@ class Huruf extends yidas\rest\Controller
 	{
 		try {
 			$makroj = $this->Huruf_model->getMakhrojByIdHuruf($id);
-			$data = (isset($makroj)) ? $this->pack($makroj) : $this->pack("ID Makhroj sebaiknya dari m1 sampai m17",404,"Not Found");
+			$data = ($makroj) ? $this->pack($makroj) : $this->pack(false,404,"Not Found, Parameter should be h01-h31 (2 more is huruf mad)");
 			return $this->response->json($data);		
 		} catch (\Throwable $th) {
 			return $this->response->json($this->pack($th,404,"Not Found"));
@@ -44,7 +44,7 @@ class Huruf extends yidas\rest\Controller
 	{
 		try {
 			$sifat = $this->Huruf_model->getSifatByIdHuruf($id);
-			$data = (isset($sifat)) ? $this->pack($sifat) : $this->pack("ID Makhroj sebaiknya dari m1 sampai m17");
+			$data = ($sifat) ? $this->pack($sifat) : $this->pack(false,404,"Not Found, Parameter should be h01-h29");
 			return $this->response->json($data);		
 		} catch (\Throwable $th) {
 			return $this->response->json($this->pack($th,404,"Not Found"));

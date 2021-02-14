@@ -17,9 +17,16 @@ class Sifat extends yidas\rest\Controller
 	public function getHurufSifat($id)
 	{
 		$sifat = $this->Sifat_model->getSifatByIdHuruf($id);
-		$data = ($sifat) ? $this->pack($sifat,200) : $this->pack("ID Huruf seharusnya dari h01 sampai h29",404,"Not Found");
+		$data = ($sifat) ? $this->pack($sifat,200) : $this->pack(false,404,"Not Found Huruf ID should be h01-h29");
 		
 		return $this->response->json($data);
+	}
+
+	public function getSifatGroup($no)
+	{
+		$group = $this->Sifat_model->getGroup($no);
+		$data = ($group) ? $this->pack($group) : $this->pack(false,404,"Not Found, Group number should be 1-13");
+		return  $this->response->json($data); 
 	}
 }
 
