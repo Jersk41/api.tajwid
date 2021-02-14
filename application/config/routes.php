@@ -67,3 +67,6 @@ $route['api/makhroj/tempat/(:any)']['GET'] = 'makhroj/groups/$1';
 $route['api/sifat']['GET'] = 'sifat';
 $route['api/sifat/group/(:num)']['GET'] = 'sifat/getSifatGroup/$1';
 
+// quran
+$route['api/quran/search'] = 'quran/find';
+
