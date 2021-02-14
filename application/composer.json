@@ -1,5 +1,6 @@
 {
     "require": {
-        "yidas/codeigniter-rest": "^1.7"
+        "yidas/codeigniter-rest": "^1.7",
+        "alquran/tools": "^1.3"
     }
 }

@@ -1,6 +1,46 @@
 {
     "packages": [
         {
+            "name": "alquran/tools",
+            "version": "1.3",
+            "version_normalized": "1.3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/islamic-network/alquran-tools.git",
+                "reference": "5a65f2e35bad00d82599a7dc0f8e0ee4c9298143"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/islamic-network/alquran-tools/zipball/5a65f2e35bad00d82599a7dc0f8e0ee4c9298143",
+                "reference": "5a65f2e35bad00d82599a7dc0f8e0ee4c9298143",
+                "shasum": ""
+            },
+            "time": "2020-01-15T07:06:38+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-0": {
+                    "AlQuranCloud": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Meezaan-ud-Din Abdu Dhil-Jalali Wal-Ikram",
+                    "email": "website@meezaan.net"
+                }
+            ],
+            "description": "Various tools to parse and process Quran Text",
+            "support": {
+                "issues": "https://github.com/islamic-network/alquran-tools/issues",
+                "source": "https://github.com/islamic-network/alquran-tools/tree/1.3"
+            },
+            "install-path": "../alquran/tools"
+        },
+        {
             "name": "yidas/codeigniter-rest",
             "version": "1.7.0",
             "version_normalized": "1.7.0.0",

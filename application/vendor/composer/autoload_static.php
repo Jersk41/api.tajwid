@@ -20,6 +20,16 @@ class ComposerStaticInit0fe20372aef9f1d23f16e4546c7e8649
         ),
     );
 
+    public static $prefixesPsr0 = array (
+        'A' => 
+        array (
+            'AlQuranCloud' => 
+            array (
+                0 => __DIR__ . '/..' . '/alquran/tools/src',
+            ),
+        ),
+    );
+
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
@@ -29,6 +39,7 @@ class ComposerStaticInit0fe20372aef9f1d23f16e4546c7e8649
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit0fe20372aef9f1d23f16e4546c7e8649::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit0fe20372aef9f1d23f16e4546c7e8649::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit0fe20372aef9f1d23f16e4546c7e8649::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit0fe20372aef9f1d23f16e4546c7e8649::$classMap;
 
         }, null, ClassLoader::class);
