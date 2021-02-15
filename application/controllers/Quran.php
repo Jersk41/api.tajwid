@@ -31,7 +31,6 @@ class Quran extends yidas\rest\Controller
 				));
 				$response = curl_exec($curl);
 				$json = json_decode($response);
-				// var_dump($json);
 				if(isset($param['parse'])&&$param['parse']==true){
 					$parser = new \AlQuranCloud\Tools\Parser\Tajweed();
 					$html = $parser->parse($json->data->text);
@@ -44,7 +43,10 @@ class Quran extends yidas\rest\Controller
 		}else{
 			$data = (!empty($ayat)) ? $this->pack($ayat,200) : $this->pack(false,404,"Not Found, We can't find that, try another ayah");
 		}
-		return $this->response->json($data);
+		return $this->response
+		->withAddedHeader('Access-Control-Allow-Origin', '*')
+		->withAddedHeader('X-Frame-Options', 'deny')
+		->json($data);
 	}
 }
 ?>

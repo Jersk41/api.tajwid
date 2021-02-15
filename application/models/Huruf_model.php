@@ -8,6 +8,35 @@ class Huruf_model extends CI_Model
 		return $this->db->get($this->table)->result_array();
 	}
 
+	public function getHurufByHija($hija)
+	{
+		$huruf = $this->db->select("huruf.id_huruf,huruf.nama_huruf,huruf.hijaiyah,makhroj.nama_makhroj AS makhroj")
+							->from($this->table)
+							->join("makhroj","makhroj.id_makhroj=huruf.makhroj")
+							->where("huruf.hijaiyah", $hija)
+							->get()
+							->result_array()[0];
+
+		$querySifat = $this->db->select("sifat.nama_sifat")
+								->from("relasi_sifat_huruf")
+								->join("sifat","sifat.id_sifat=relasi_sifat_huruf.sifat","left")
+								->join("huruf","relasi_sifat_huruf.huruf=huruf.id_huruf")
+								->where("huruf.hijaiyah",$hija)
+								->get()
+								->result_array();
+		
+		if ($querySifat) {
+			$sifat = [];
+			foreach ($querySifat as $q => $val) {
+				$sifat[] = $val['nama_sifat'];
+			}
+			$huruf["sifat"] = $sifat;
+			return $huruf;
+		}else {
+			return false;
+		}
+	}
+
 	public function getHurufById($id)
 	{
 		$huruf = $this->db->select("huruf.id_huruf,huruf.nama_huruf,huruf.hijaiyah,makhroj.nama_makhroj AS makhroj")

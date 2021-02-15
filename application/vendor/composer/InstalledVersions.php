@@ -29,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '8fb1c6d6662749801d97608b8b592a3ad82b4f96',
+    'reference' => '08092770170339b8ad04a2a358ca2938a7e53e27',
     'name' => '__root__',
   ),
   'versions' => 
@@ -41,7 +41,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '8fb1c6d6662749801d97608b8b592a3ad82b4f96',
+      'reference' => '08092770170339b8ad04a2a358ca2938a7e53e27',
     ),
     'alquran/tools' => 
     array (

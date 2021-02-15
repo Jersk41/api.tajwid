@@ -57,6 +57,7 @@ $route['404_override'] = 'errors/page_missing';
 // rest api routes
 $route['api/huruf']['GET'] = 'huruf';
 $route['api/huruf/(:any)']['GET'] = 'huruf/showDetails/$1';
+$route['api/huruf']['POST'] = 'huruf/showByHija';
 $route['api/huruf/(:any)/makhroj']['GET'] = 'huruf/findMakhroj/$1';
 $route['api/huruf/(:any)/sifat']['GET'] = 'huruf/findSifat/$1';
 

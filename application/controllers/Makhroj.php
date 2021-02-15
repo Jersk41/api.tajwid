@@ -11,9 +11,12 @@ class Makhroj extends yidas\rest\Controller
 		try {
 			$makroj = $this->Makhroj_model->getAll();
 			$data = $this->pack($makroj,200);
-			return $this->response->json($data);
+			return $this->response
+			->withAddedHeader('Access-Control-Allow-Origin', '*')
+			->withAddedHeader('X-Frame-Options', 'deny')	
+			->json($data);
 		} catch (\Throwable $th) {
-			return $this->response->json($this->pack($th,404,"Not Found"));
+			redirect("/errors");
 		}
 	}
 
@@ -27,7 +30,10 @@ class Makhroj extends yidas\rest\Controller
 			}else {
 				$data = $this->pack(false,404,"Not Found, Parameter should be m1-m17");
 			}
-			return $this->response->json($data);
+			return $this->response
+			->withAddedHeader('Access-Control-Allow-Origin', '*')
+			->withAddedHeader('X-Frame-Options', 'deny')	
+			->json($data);
 		} catch (\Throwable $th) {
 			redirect("/errors");
 		}
@@ -38,9 +44,12 @@ class Makhroj extends yidas\rest\Controller
 		try {
 			$makhroj = $this->Makhroj_model->getMakhrojGroup($groupName);
 			$data = ($makhroj) ? $this->pack($makhroj,200) : $this->pack(false,404,"Not Found, Parameter should be between these values Al-Jauf, Al-Halaq, Al-Lisan, dan Al-Khoisyum");
-			return $this->response->json($data);			
+			return $this->response
+			->withAddedHeader('Access-Control-Allow-Origin', '*')
+			->withAddedHeader('X-Frame-Options', 'deny')	
+			->json($data);			
 		} catch (\Throwable $th) {
-			return $this->response->json($this->pack($th,404,"Not Found"));
+			redirect("/errors");
 		}
 	}
 }

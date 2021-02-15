@@ -10,7 +10,10 @@ class Sifat extends yidas\rest\Controller
 	{
 		$sifat = $this->Sifat_model->getAll();
 		$data = $this->pack($sifat,200);
-		return $this->response->json($data);
+		return $this->response
+		->withAddedHeader('Access-Control-Allow-Origin', '*')
+		->withAddedHeader('X-Frame-Options', 'deny')
+		->json($data);
 	}
 
 	public function getSifatGroup($no)
@@ -22,7 +25,10 @@ class Sifat extends yidas\rest\Controller
 			}else {
 				$data = $this->pack(false,404,"Not Found, Group number should be 1-13");
 			}
-			return  $this->response->json($data); 
+			return  $this->response
+			->withAddedHeader('Access-Control-Allow-Origin', '*')
+			->withAddedHeader('X-Frame-Options', 'deny')	
+			->json($data); 
 		} catch (\Throwable $th) {
 			redirect("/errors");
 		}
