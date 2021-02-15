@@ -14,40 +14,55 @@ class Huruf extends yidas\rest\Controller
 			$data = $this->pack($huruf,200);
 			return $this->response->json($data);
 		} catch (\Throwable $th) {
-			return $this->response->json($this->pack($th,404,"Not Found"));
+			redirect("/errors");
 		}
 	}
 
 	public function showDetails($id)
 	{
 		try {
-			$huruf = $this->Huruf_model->getHurufById($id);
-			$data = ($huruf) ? $this->pack($huruf,200) : $this->pack(false,404,"Not Found, Parameter should be h01-h29");	
+			$regex = "/h[012][0-9]$/";
+			if(preg_match($regex,$id,$match)){
+				$huruf = $this->Huruf_model->getHurufById($match[0]);
+				$data = $this->pack($huruf,200);
+			}else {
+				$data = $this->pack(false,404,"Not Found, Parameter should be h01-h29");
+			}
 			return $this->response->json($data);			
 		} catch (\Throwable $th) {
-			return $this->response->json($this->pack($th,404,"Not Found"));
+			redirect("/errors");
 		}
 	}
 
 	public function findMakhroj($id)
 	{
 		try {
-			$makroj = $this->Huruf_model->getMakhrojByIdHuruf($id);
-			$data = ($makroj) ? $this->pack($makroj) : $this->pack(false,404,"Not Found, Parameter should be h01-h31 (2 more is huruf mad)");
+			$regex = "/h[012][0-9]$/";
+			if(preg_match($regex,$id,$match)){
+				$makroj = $this->Huruf_model->getMakhrojByIdHuruf($id);
+				$data = $this->pack($makroj);
+			}else{
+				$data = $this->pack(false,404,"Not Found, Parameter should be h01-h31 (2 more is huruf mad)");
+			}
 			return $this->response->json($data);		
 		} catch (\Throwable $th) {
-			return $this->response->json($this->pack($th,404,"Not Found"));
+			redirect("/errors");
 		}
 	}
 
 	public function findSifat($id)
 	{
 		try {
-			$sifat = $this->Huruf_model->getSifatByIdHuruf($id);
-			$data = ($sifat) ? $this->pack($sifat) : $this->pack(false,404,"Not Found, Parameter should be h01-h29");
+			$regex = "/h[012][0-9]$/";
+			if(preg_match($regex,$id,$match)){
+				$sifat = $this->Huruf_model->getSifatByIdHuruf($id);
+				$data = $this->pack($sifat);
+			}else{
+				$data = $this->pack(false,404,"Not Found, Parameter should be h01-h29");
+			}
 			return $this->response->json($data);		
 		} catch (\Throwable $th) {
-			return $this->response->json($this->pack($th,404,"Not Found"));
+			redirect("/errors");
 		}
 	}
 }

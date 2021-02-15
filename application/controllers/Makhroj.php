@@ -20,11 +20,16 @@ class Makhroj extends yidas\rest\Controller
 	public function show($id)
 	{
 		try {
-			$makroj = $this->Makhroj_model->getMakhrojById($id);
-			$data = ($makroj) ? $this->pack($makroj,200) : $this->pack(false,404,"Not Found, Parameter should be m1-m17");
+			$regex = "/m[1][0-7]$|m[0-9]$/";
+			if (preg_match($regex,$id,$match)) {
+				$makroj = $this->Makhroj_model->getMakhrojById($match[0]);
+				$data = $this->pack($makroj,200);				
+			}else {
+				$data = $this->pack(false,404,"Not Found, Parameter should be m1-m17");
+			}
 			return $this->response->json($data);
 		} catch (\Throwable $th) {
-			return $this->response->json($this->pack($th,404,"Not Found"));
+			redirect("/errors");
 		}
 	}
 
